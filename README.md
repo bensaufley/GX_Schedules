@@ -1,22 +1,22 @@
 # SCLA/RSCNY GroupEx Schedules
 
 ## Models
-- Club
-- GxClass  
+- **Club**
+- **GxClass**  
     Unique, named classes that can be used at any and all Clubs.  
     - **Has_Many**
-      - GxClassSet  
+      - **GxClassSet**  
           A set of Classes at a specific Club, occurring once a week for a defined number of weeks  
-          - **Has_One**
-              - Instructor
-              - Studio
-              - Category
-          - **Has_Many**
-              - GxClassChange  
+          - *Has_One*
+              - **Instructor
+              - **Studio
+              - **Category
+          - *Has_Many*
+              - **GxClassChange**  
                 A change to a GxClassSet valid for a particular day
-              - Track ( through: GxClassSetTrack )
+              - **Track** ( through: **GxClassSetTrack** )  
                 Like category except more vague, and able to have multiple apply to GxClassSet
-- User  
+- **User**  
   For internal use only - updating the schedules. Not to be used for external users; will be handled through CSI
 
 
