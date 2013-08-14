@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'turbolinks'
 gem 'haml'
+gem 'haml-rails'
 gem 'jbuilder', '~> 1.0.1'
 
 group :doc do
