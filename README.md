@@ -59,6 +59,12 @@
 - `end_time`
 - `canceled`
 
+### Connector Models
+
+#### ClubInstructor
+#### ClubUser
+#### GxClassTrack
+
 ## Structure
 - **[`Club`](#club)**  
     *Has_Many*
