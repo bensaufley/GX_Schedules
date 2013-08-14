@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-clubs = Club.create({
+clubs = Club.create(
   [{
     id: 1,
     cAbbrv: "BOS",
@@ -19,8 +19,8 @@ clubs = Club.create({
     fb: "https://www.facebook.com/thesportsclubla",
     twitter: "SportsClub_LA",
     timezone: "America/New_York"
-  }],
-  [{
+  },
+  {
     id: 6,
     cAbbrv: "DC",
     city: "Washington, DC",
@@ -29,11 +29,11 @@ clubs = Club.create({
     phone: "Sports Club/LA",
     link: "http://dc.sportsclubla.com",
     sfdc_name: "DC",
-    fb: "https://www.facebook.com/thesportsclubla"
+    fb: "https://www.facebook.com/thesportsclubla",
     twitter: "SportsClub_LA",
     timezone: "America/New_York"
-  }],
-  [{
+  },
+  {
     id: 2,
     cAbbrv: "MIA",
     city: "Miami",
@@ -45,8 +45,8 @@ clubs = Club.create({
     fb: "https://www.facebook.com/thesportsclubla",
     twitter: "SportsClub_LA",
     timezone: "America/New_York"
-  }],
-  [{
+  },
+  {
     id: 4,
     cAbbrv: "REE",
     city: "New York",
@@ -58,8 +58,8 @@ clubs = Club.create({
     fb: "https://www.facebook.com/reeboksportsclubny",
     twitter: "RbkSportsClubNY",
     timezone: "America/New_York"
-  }],
-  [{
+  },
+  {
     id: 5,
     cAbbrv: "SF",
     city: "San Francisco",
@@ -71,8 +71,8 @@ clubs = Club.create({
     fb: "https://www.facebook.com/thesportsclubla",
     twitter: "SportsClub_LA",
     timezone: "America/Los_Angeles"
-  }],
-  [{
+  },
+  {
     id: 3,
     cAbbrv: "UES",
     city: "Upper East Side",
@@ -84,8 +84,8 @@ clubs = Club.create({
     fb: "https://www.facebook.com/thesportsclubla",
     twitter: "SportsClub_LA",
     timezone: "America/New_York"
-  }],
-  [{
+  },
+  {
     id: 7,
     cAbbrv: "CNH",
     city: "Chestnut Hill",
@@ -98,36 +98,36 @@ clubs = Club.create({
     twitter: "SportsClub_LA",
     timezone: "America/New_York"
   }]
-})
+)
 
-users = User.create({
+users = User.create(
   [{
     first_name: 'Ben',
     last_name:  'Saufley',
     approved:   true,
     email:      'bsaufley@mp-sportsclub.com'
-  }],
-  [{
+  },
+  {
     first_name: 'Stuart',
     last_name:  'Terrett',
     approved:   true,
     email:      'sterrett@mp-sportsclub.com'
-  }],
-  [{
+  },
+  {
     first_name: 'Kelvin',
     last_name:  'Everitt',
     approved:   true,
     email:      'keveritt@mp-sportsclub.com'
-  }],
-  [{
+  },
+  {
     first_name: 'Rob',
     last_name:  'Kram',
     approved:   true,
     email:      'rkram@mp-sportsclub.com'
   }]
-})
+)
 
 users.each do |u|
-  user.update_attribute(admin, true)
-  user.clubs << Club.all
+  u.update_attribute(:admin, true)
+  u.clubs << Club.all
 end
