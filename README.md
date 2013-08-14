@@ -75,19 +75,19 @@
 ## Structure
 - **[`Club`](#club)**  
     *Has_Many*
-    - **[`GxClass`](#gxclass)es** :( through: **[`GxClassSet`](#gxclassset)** )
+    - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
     - **[`Studio`](#studio)s**
-    - **[`Instructor`](#instructor)s** :( through: **[`ClubInstructor`](#clubinstructor)** )
-    - **[`User`](#user)s** :( through: **[`ClubUser`](#clubuser)** )
+    - **[`Instructor`](#instructor)s** ( through: **[`ClubInstructor`](#clubinstructor)** )
+    - **[`User`](#user)s** ( through: **[`ClubUser`](#clubuser)** )
 - **[`GxClass`](#gxclass)**  
     Unique, named classes that can be used at any and all [`Club`](#club)s.  
     - *Has_One*
         - **[`Category`](#category)**
     - *Has_Many*
-        - **[`Track`](#track)s** :( through: **[`GxClassTrack`](#gxclasstrack)** )  
-          Like [`Category`](#category) :except more vague, and able to have multiple apply to [`GxClass`](#gxclass)
+        - **[`Track`](#track)s** ( through: **[`GxClassTrack`](#gxclasstrack)** )  
+          Like [`Category`](#category) except more vague, and able to have multiple apply to [`GxClass`](#gxclass)
         - **[`GxClassSet`](#gxclassset)**  
-            A set of [`GxClass`](#gxclass)es :at a specific [`Club`](#club), occurring once a week for a defined number of weeks  
+            A set of [`GxClass`](#gxclass)es at a specific [`Club`](#club), occurring once a week for a defined number of weeks  
             - *Has_One*
                 - **[`Instructor`](#instructor)**
                 - **[`Studio`](#studio)**
@@ -98,6 +98,6 @@
 - **[`User`](#user)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
-    - **[`Club`](#club)s** :( through: **[`ClubUser`](#clubuser)** )
-    - **[`GxClass`](#gxclass)es** :( through: **[`GxClassSet`](#gxclassset)** )
+    - **[`Club`](#club)s** ( through: **[`ClubUser`](#clubuser)** )
+    - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
     - **[`GxClassSet`](#gxclassset)s**
