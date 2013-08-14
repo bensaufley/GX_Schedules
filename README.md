@@ -67,21 +67,21 @@
     - **[`Instructor`](#instructor)s** ( through: **[`ClubInstructor`](#clubinstructor)** )
     - **[`User`](#user)s** ( through: **[`ClubUser`](#clubuser)** )
 - **[`GxClass`](#gxclass)**  
-    Unique, named classes that can be used at any and all Clubs.  
+    Unique, named classes that can be used at any and all [`Club`](#club)s.  
     - *Has_One*
         - **[`Category`](#category)**
     - *Has_Many*
-        - **[`Track`](#track)s** ( through: **[`GxClassSetTrack`](#gxclasssetTrack)** )  
-          Like category except more vague, and able to have multiple apply to GxClassSet
+        - **[`Track`](#track)s** ( through: **[`GxClassTrack`](#gxclasstrack)** )  
+          Like [`Category`](#category) except more vague, and able to have multiple apply to [`GxClass`](#gxclass)
         - **[`GxClassSet`](#gxclassset)**  
-            A set of Classes at a specific Club, occurring once a week for a defined number of weeks  
+            A set of [`GxClass`](#gxclass)es at a specific [`Club`](#club), occurring once a week for a defined number of weeks  
             - *Has_One*
                 - **[`Instructor`](#instructor)**
                 - **[`Studio`](#studio)**
                 - **[`Level`](#level)**
             - *Has_Many*
-                - **[`GxClassChange`](#gxclassChange)s**  
-                  A change to a GxClassSet valid for a particular day
+                - **[`GxClassChange`](#gxclasschange)s**  
+                  A change to a [`GxClassSet`](#gxclassset) valid for a particular day
 - **[`User`](#user)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
