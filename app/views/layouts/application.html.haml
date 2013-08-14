@@ -1,5 +1,5 @@
 !!!
-%html
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
   %head
     %title Class Schedules#{ content_for?(:club_name) ? (" | " + yield(:club_name)) : content_for?(:title) ? " | " + yield(:title) : "" }
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
