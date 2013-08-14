@@ -1,8 +1,8 @@
 class CreateClubUsers < ActiveRecord::Migration
   def change
     create_table :club_users do |t|
-      t.club_id :integer
-      t.user_id :integer
+      t.integer :club_id
+      t.integer :user_id
 
       t.timestamps
     end
