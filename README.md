@@ -2,62 +2,69 @@
 
 ## Models
 
+### User
+- `string email`
+- `boolean approved`
+- `boolean admin`
+
 ### Club
-- `id`
-- `cAbbrv`
-- `city`
-- `address`
-- `banner`
-- `club`
-- `clubNum`
-- `fb`
-- `fullclub`
-- `link`
-- `city`
-- `sfdc`
-- `twitter`
+- `integer id`
+- `string cAbbrv`
+- `string city`
+- `string address`
+- `string brand`  
+  Sports Club/LA or Reebok Sports Club/NY
+- `string phone`
+- `string link`
+- `string city`
+- `string sfdc_name`
+- `string fb`
+- `string twitter`
+- `string timezone`
 
 ### Studio
-- `name`
-- `description`
-- `club_id`
+- `string name`
+- `text description`
+- `integer club_id`
 
 ### Category
-- `name`
-- `description`
+- `string name`
+- `text description`
 
 ### Track
-- `name`
-- `description`
+- `string name`
+- `text description`
 
 ### Level
-- `short`  
+- `string short`  
   "1", "1-2", etc
-- `long`  
+- `string long`  
   "Beginner","Beginner to Intermediate", etc
 
 ### GxClass
-- `name`
-- `description`
-- `category_id`
+- `string name`
+- `text description`
+- `integer category_id`
 
 ### GxClassSet
-- `gx_class_id`
-- `studio_id`
-- `instructor_id`
-- `level_id`
-- `start_date`
-- `repeat_times`
-- `start_time`
-- `end_time`
+- `integer gx_class_id`
+- `integer studio_id`
+- `integer instructor_id`
+- `integer level_id`
+- `date start_date`
+- `integer repeat_times`
+- `time start_time`
+- `time end_time`
+- `boolean reservable`
+- `integer reserve_max`
 
 ### GxClassChange
-- `gx_class_set_id`
-- `studio_id`
-- `instructor_id`
-- `start_time`
-- `end_time`
-- `canceled`
+- `integer gx_class_set_id`
+- `integer studio_id`
+- `integer instructor_id`
+- `time start_time`
+- `time end_time`
+- `boolean canceled`
 
 ### Connector Models
 
