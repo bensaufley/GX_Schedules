@@ -7,6 +7,11 @@ GXSchedules::Application.routes.draw do
     get '/clubs', to: "clubs#index", defaults: { format: 'json' }
   end
 
+  scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
+    resources :gx_classes, path: "classes"
+    match "/", to: "gxclasses#index", via: :get
+  end
+    
   # You can have the root of your site routed with "root"
   root 'clubs#index'
 
