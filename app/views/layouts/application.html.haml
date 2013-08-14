@@ -6,5 +6,8 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    =content_tag(:h1, yield(:title)) if content_for?(:title)
-    = yield
+    %header
+      =content_tag(:h1, yield(:title)) if content_for?(:title)
+    %main
+      = yield
+    %footer

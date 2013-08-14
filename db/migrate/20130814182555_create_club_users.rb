@@ -6,5 +6,7 @@ class CreateClubUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :club_users, :club_id
+    add_index :club_users, :user_id
   end
 end

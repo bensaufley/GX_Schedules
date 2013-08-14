@@ -36,12 +36,6 @@
 - `string :name`
 - `text :description`
 
-### Level
-- `string :short`  
-  "1", "1-2", etc
-- `string :long`  
-  "Beginner","Beginner to Intermediate", etc
-
 ### GxClass
 - `string :name`
 - `text :description`
@@ -51,19 +45,20 @@
 - `integer :gx_class_id`
 - `integer :studio_id`
 - `integer :instructor_id`
-- `integer :level_id`
+- `integer :level`
 - `date :start_date`
 - `integer :repeat_times`
 - `time :start_time`
 - `time :end_time`
 - `boolean :reservable`  
   If it is a free class, `paid_class_csi_guid` will be nil and `reserve_max` will be filled in.
-- `text :paid_class_csi_guid`  
+- `text :paid_class_csi_id`  
   If it is a paid class, the `paid_class_csi_guid` will be non-nil and `reserve_max` will be nil.
 - `integer :reserve_max`
 
-### GxClassChange
+### ScheduleChange
 - `integer :gx_class_set_id`
+- `date :effective_date`
 - `integer :studio_id`
 - `integer :instructor_id`
 - `time :start_time`
@@ -80,7 +75,6 @@
 #### ClubInstructor
 #### ClubUser
 #### GxClassTrack
-#### GxClassSetReservation
 
 ## Structure
 - **[`Club`](#club)**  
@@ -105,7 +99,7 @@
             - *Has_Many*
                 - **[`GxClassChange`](#gxclasschange)s**  
                   A change to a [`GxClassSet`](#gxclassset) valid for a particular day
-                - **[`Reservation`](#reservation)s** ( through: [`GxClassSetReservation`](#gxclassetreservation) )
+                - **[`Reservation`](#reservation)s**
 - **[`User`](#user)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
