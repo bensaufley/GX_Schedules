@@ -1,7 +1,7 @@
 # SCLA/RSCNY GroupEx Schedules
 
 ## Models
-- **Club**
+- **Club**  
     *Has_Many*
     - **GxClass** ( through: **GxClassSet** )
     - **Studio**
@@ -22,7 +22,7 @@
             - **Track** ( through: **GxClassSetTrack** )  
               Like category except more vague, and able to have multiple apply to GxClassSet
 - **User**  
-    For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI
+    For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
     - **Club** ( through: **ClubUser** )
     - **GxClass** ( through: **GxClassSet** )
