@@ -60,31 +60,31 @@
 - `canceled`
 
 ## Structure
-- **Club**  
+- **[Club](#club)**  
     *Has_Many*
-    - **GxClass** ( through: **GxClassSet** )
-    - **Studio**
-    - **Instructor** ( through: **ClubInstructor** )
-    - **User** ( through: **ClubUser** )
-- **GxClass**  
+    - **[GxClass](#GxClass)** ( through: **[GxClassSet](#GxClassSet)** )
+    - **[Studio](#Studio)**
+    - **[Instructor](#Instructor)** ( through: **[ClubInstructor](#ClubInstructor)** )
+    - **[User](#User)** ( through: **[ClubUser](#ClubUser)** )
+- **[GxClass](#GxClass)**  
     Unique, named classes that can be used at any and all Clubs.  
     - *Has_One*
-        - **Category**
+        - **[Category](#Category)**
     - *Has_Many*
-        - **Track** ( through: **GxClassSetTrack** )  
+        - **[Track](#Track)** ( through: **[GxClassSetTrack](#GxClassSetTrack)** )  
           Like category except more vague, and able to have multiple apply to GxClassSet
-        - **GxClassSet**  
+        - **[GxClassSet](#GxClassSet)**  
             A set of Classes at a specific Club, occurring once a week for a defined number of weeks  
             - *Has_One*
-                - **Instructor**
-                - **Studio**
-                - **Level**
+                - **[Instructor](#Instructor)**
+                - **[Studio](#Studio)**
+                - **[Level](#Level)**
             - *Has_Many*
-                - **GxClassChange**  
+                - **[GxClassChange](#GxClassChange)**  
                   A change to a GxClassSet valid for a particular day
-- **User**  
+- **[User](#User)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
-    - **Club** ( through: **ClubUser** )
-    - **GxClass** ( through: **GxClassSet** )
-    - **GxClassSet**
+    - **[Club](#Club)** ( through: **[ClubUser](#ClubUser)** )
+    - **[GxClass](#GxClass)** ( through: **[GxClassSet](#GxClassSet)** )
+    - **[GxClassSet](#GxClassSet)**
