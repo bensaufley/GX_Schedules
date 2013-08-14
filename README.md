@@ -3,6 +3,8 @@
 ## Models
 
 ### User
+- `string first_name`
+- `string last_name`
 - `string :email`
 - `boolean :approved`
 - `boolean :admin`
@@ -16,7 +18,6 @@
   Sports Club/LA or Reebok Sports Club/NY
 - `string :phone`
 - `string :link`
-- `string :city`
 - `string :sfdc_name`
 - `string :fb`
 - `string :twitter`
