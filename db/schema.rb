@@ -55,15 +55,6 @@ ActiveRecord::Schema.define(version: 20130814223258) do
     t.datetime "updated_at"
   end
 
-  create_table "gx_class_set_reservations", force: true do |t|
-    t.integer  "gx_class_set_id"
-    t.integer  "reservation_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "gx_class_set_reservations", ["gx_class_set_id"], name: "index_gx_class_set_reservations_on_gx_class_set_id", using: :btree
-
   create_table "gx_class_sets", force: true do |t|
     t.integer  "gx_class_id"
     t.integer  "studio_id"
