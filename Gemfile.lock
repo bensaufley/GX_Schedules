@@ -62,6 +62,8 @@ GEM
       multi_json (~> 1.0)
     ffi (1.9.0)
     fssm (0.2.10)
+    haml (4.0.3)
+      tilt
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.0.2)
@@ -162,6 +164,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
   devise
+  haml
   jbuilder (~> 1.0.1)
   jquery-rails
   mysql2
