@@ -55,7 +55,10 @@
 - `integer :repeat_times`
 - `time :start_time`
 - `time :end_time`
-- `boolean :reservable`
+- `boolean :reservable`  
+  If it is a free class, `paid_class_csi_guid` will be nil and `reserve_max` will be filled in.
+- `text :paid_class_csi_guid`  
+  If it is a paid class, the `paid_class_csi_guid` will be non-nil and `reserve_max` will be nil.
 - `integer :reserve_max`
 
 ### GxClassChange
@@ -66,11 +69,17 @@
 - `time :end_time`
 - `boolean :canceled`
 
+### Reservation
+- `integer :gx_class_set_id`
+- `string :member_id`
+- `string :member_email`
+
 ### Connector Models
 
 #### ClubInstructor
 #### ClubUser
 #### GxClassTrack
+#### GxClassSetReservation
 
 ## Structure
 - **[`Club`](#club)**  
@@ -95,6 +104,7 @@
             - *Has_Many*
                 - **[`GxClassChange`](#gxclasschange)s**  
                   A change to a [`GxClassSet`](#gxclassset) valid for a particular day
+                - **[`Reservation`](#reservation)s** ( through: [`GxClassSetReservation`](#gxclassetreservation) )
 - **[`User`](#user)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
