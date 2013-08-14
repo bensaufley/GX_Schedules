@@ -60,31 +60,31 @@
 - `canceled`
 
 ## Structure
-- **[Club](#club)**  
+- **[`Club`](#club)**  
     *Has_Many*
-    - **[GxClass](#gxclass)es** ( through: **[GxClassSet](#gxclassset)** )
-    - **[Studio](#studio)s**
-    - **[Instructor](#instructor)s** ( through: **[ClubInstructor](#clubinstructor)** )
-    - **[User](#user)s** ( through: **[ClubUser](#clubuser)** )
-- **[GxClass](#gxclass)**  
+    - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
+    - **[`Studio`](#studio)s**
+    - **[`Instructor`](#instructor)s** ( through: **[`ClubInstructor`](#clubinstructor)** )
+    - **[`User`](#user)s** ( through: **[`ClubUser`](#clubuser)** )
+- **[`GxClass`](#gxclass)**  
     Unique, named classes that can be used at any and all Clubs.  
     - *Has_One*
-        - **[Category](#category)**
+        - **[`Category`](#category)**
     - *Has_Many*
-        - **[Track](#track)s** ( through: **[GxClassSetTrack](#gxclasssetTrack)** )  
+        - **[`Track`](#track)s** ( through: **[`GxClassSetTrack`](#gxclasssetTrack)** )  
           Like category except more vague, and able to have multiple apply to GxClassSet
-        - **[GxClassSet](#gxclassset)**  
+        - **[`GxClassSet`](#gxclassset)**  
             A set of Classes at a specific Club, occurring once a week for a defined number of weeks  
             - *Has_One*
-                - **[Instructor](#instructor)**
-                - **[Studio](#studio)**
-                - **[Level](#level)**
+                - **[`Instructor`](#instructor)**
+                - **[`Studio`](#studio)**
+                - **[`Level`](#level)**
             - *Has_Many*
-                - **[GxClassChange](#gxclassChange)s**  
+                - **[`GxClassChange`](#gxclassChange)s**  
                   A change to a GxClassSet valid for a particular day
-- **[User](#user)**  
+- **[`User`](#user)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
-    - **[Club](#club)s** ( through: **[ClubUser](#clubuser)** )
-    - **[GxClass](#gxclass)es** ( through: **[GxClassSet](#gxclassset)** )
-    - **[GxClassSet](#gxclassset)s**
+    - **[`Club`](#club)s** ( through: **[`ClubUser`](#clubuser)** )
+    - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
+    - **[`GxClassSet`](#gxclassset)s**
