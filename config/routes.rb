@@ -1,17 +1,36 @@
 GXSchedules::Application.routes.draw do
-  devise_for :users
+
+  devise_for :users, path: 'admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   scope :format => true, :constraints => { :format => 'json' } do
     get '/clubs', to: "clubs#index", defaults: { format: 'json' }
+    get '/categories', to: 'categories#index', defaults: { format: 'json' }
+    get '/tracks', to: 'tracks#index', defaults: { format: 'json' }
   end
+  
+  resources :tracks, only: [ :show ]
+  resources :categories, only: [ :show ]
 
   scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
-    resources :gx_classes, path: "classes"
-    match "/", to: "gxclasses#index", via: :get
+    resources :gx_classes, path: "classes", only: [ :index, :show ]
+    resources :studios, :instructors, only: [ :index, :show ]
+    get "/", to: "club#show"
   end
-    
+  
+  scope :admin do
+    resources :clubs, except: [ :show, :index ]
+    scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
+      get "/", to: "club#show"
+      resources :gx_classes, path: "classes"
+      resources :gx_class_sets, path: "class_sets"
+      resources :studios, :instructors
+    end
+    resources :tracks, :categories
+    get "/", to: "admin#index"
+  end
+
   # You can have the root of your site routed with "root"
   root 'clubs#index'
 

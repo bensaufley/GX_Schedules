@@ -1,0 +1,5 @@
+- content_for :title, "Select your Club"
+
+%ul
+  - @clubs.each do |club|
+    %li= link_to "#{club.brand} – #{club.city}", club_path(club)
