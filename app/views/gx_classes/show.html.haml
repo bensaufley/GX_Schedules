@@ -1,6 +1,11 @@
+- content_for :title, "#{@gx_class.name}"
+
 %p#notice= notice
 
-
-= link_to 'Edit', edit_gx_class_path(@gx_class)
-\|
-= link_to 'Back', gx_classes_path
+%article.class
+  = link_to('Edit', edit_gx_class_path(@gx_class)) if current_user.try(:admin?)
+  = link_to('Back', gx_classes_path)
+  %p.description= @gx_class.description
+  %p.tags
+    Category: #{link_to @gx_class.category.name, @gx_class.category }
+    #{"Track".pluralize(@gx_class.tracks.count)}: #{ @gx_class.tracks.map{|track| link_to track.name, track }.join(", ").html_safe }

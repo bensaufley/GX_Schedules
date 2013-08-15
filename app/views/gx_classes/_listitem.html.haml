@@ -1,0 +1,7 @@
+%li
+  %strong.name= link_to gx_class.name, gx_class
+  - if current_user.try(:admin?)
+    = link_to('Add to Schedule', '')
+    = link_to('Edit', edit_gx_class_path(gx_class))
+    = link_to('Destroy', gx_class, :method => :delete, :data => { :confirm => 'Are you sure?' })
+  %p.description= gx_class.description.html_safe

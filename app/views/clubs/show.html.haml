@@ -1,7 +1,16 @@
 - content_for :title, "#{@club.brand} – #{@club.city}"
 
+%nav.datenav
+  = link_to "« Previous Week", club_path(@club, params: params.except("action","controller","club_id").merge(date: @date - 1.week))
+  = link_to "‹ Previous Day", club_path(@club, params: params.except("action","controller","club_id").merge(date: @date - 1.day))
+  = link_to "Today", club_path(@club, params: params.except("action","controller","club_id").merge(date: Date.today)) if @date!=Date.today
+  = link_to "Next Day ›", club_path(@club, params: params.except("action","controller","club_id").merge(date: @date + 1.day))
+  = link_to "Next Week »", club_path(@club, params: params.except("action","controller","club_id").merge(date: @date + 1.week))
+
 - @classes.each do |day,classes|
-  %section= day.to_date.strftime("%a %-m.%-d")
+  - day = day.to_date
+  %section= day.strftime("%a %-m.%-d")
+  =link_to "Schedule New Class", new_club_gx_class_set_path( start_date: day ) if user_signed_in?
   %ul
     - if classes.empty?
       %li

@@ -1,11 +1,5 @@
 GXSchedules::Application.routes.draw do
 
-  get "gx_classes/index"
-  get "gx_classes/show"
-  get "gx_classes/new"
-  get "gx_classes/create"
-  get "gx_classes/update"
-  get "gx_classes/destroy"
   devise_for :users, path: 'admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -18,20 +12,24 @@ GXSchedules::Application.routes.draw do
   
   resources :tracks, only: [ :show ]
   resources :categories, only: [ :show ]
+  resources :gx_classes, path: "classes", only: [ :index, :show ]
 
   scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
-    resources :gx_classes, path: "classes", only: [ :index, :show ]
+    resources :gx_classes, path: "classes", only: [ :index  ]
     resources :studios, :instructors, only: [ :index, :show ]
     get "/", to: "clubs#show"
   end
   
   scope :admin do
+    resources :gx_classes, path: "classes", except: [ :show, :index ]
+    get '/classes/:id', to: redirect('/classes/%{id}')
+    get '/classes', to: redirect('/classes')
     resources :clubs, except: [ :show, :index ]
     scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
       get "/", to: "club#show"
-      resources :gx_classes, path: "classes"
       resources :gx_class_sets, path: "class_sets"
       resources :studios, :instructors
+      resources :users
     end
     resources :tracks, :categories
     get "/", to: "admin#index"

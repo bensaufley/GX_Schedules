@@ -1,2 +1,13 @@
-%h1 Admin#index
-%p Find me in app/views/admin/index.html.haml
+- content_for :title, "Administer"
+
+%section
+%h2 Clubs
+%ul
+  -current_user.clubs.sort_by(&:city).each do |club|
+    %li
+      =link_to club.city, club
+      - if current_user.admin?
+        %ol
+          - club.users.sort_by(&:last_name).each do |u|
+            %li= link_to "#{u.last_name}, #{u.first_name}", club_user_path(club, u)
+    

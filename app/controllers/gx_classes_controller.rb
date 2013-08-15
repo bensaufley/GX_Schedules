@@ -1,5 +1,6 @@
 class GxClassesController < ApplicationController
   before_action :set_gx_class, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
 
   # GET /gx_classes
   def index

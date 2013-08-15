@@ -1,17 +1,9 @@
-%h1 Listing gx_classes
+- content_for :title, "Listing Classes"
 
-%table
-  %tr
-    %th
-    %th
-    %th
+= link_to('New Gx class', new_gx_class_path) if current_user.try(:admin?)
 
+%ul
   - @gx_classes.each do |gx_class|
-    %tr
-      %td= link_to 'Show', gx_class
-      %td= link_to 'Edit', edit_gx_class_path(gx_class)
-      %td= link_to 'Destroy', gx_class, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = render 'listitem', gx_class: gx_class
 
-%br
-
-= link_to 'New Gx class', new_gx_class_path
+= link_to('New Gx class', new_gx_class_path) if current_user.try(:admin?)

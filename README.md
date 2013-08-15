@@ -49,6 +49,7 @@
 - `integer :category_id`
 
 ### GxClassSet
+- `integer :club_id`
 - `integer :gx_class_id`
 - `integer :studio_id`
 - `integer :instructor_id`
