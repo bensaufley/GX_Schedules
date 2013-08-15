@@ -25,6 +25,19 @@ namespace :db do
             end
             puts "Added #{instructor.first_name} #{instructor.last_name}. Clubs: #{instructor.clubs.map(&:cAbbrv).join(', ')}"
           end
+        when "class"
+          CSV.foreach(filename, headers: true) do |row|
+            c = row.to_hash
+            cl = GxClass.create({
+              name:         c['class_name'],
+              description:  c['class_description'],
+              category:     Category.find_or_create_by(name: c['category_name'])
+            })
+            3.times do |x|
+              if !c['track_' + x].nil?
+                cl.tracks << Track.find_or_create_by(name: c['track_' + x])
+              end
+            end
         else
           puts "No case found for model #{model}"
       end
