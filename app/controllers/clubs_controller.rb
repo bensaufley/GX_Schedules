@@ -11,7 +11,8 @@ class ClubsController < ApplicationController
   end
   
   def show
-    @classes = @club.gx_class_sets.where(params)
+    @date = params[:date] || Date.today
+    @classes = @club.get_schedule(@date, 7)
   end
 
   private

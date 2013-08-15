@@ -1,1 +1,11 @@
 - content_for :title, "#{@club.brand} – #{@club.city}"
+
+- @classes.each do |day,classes|
+  %section= day.to_date.strftime("%a %-m.%-d")
+  %ul
+    - if classes.empty?
+      %li
+        %strong No classes scheduled
+    - else
+      - classes.each do |cl|
+        =render "gx_class_sets/schedule_instance", locals: { cl: cl }
