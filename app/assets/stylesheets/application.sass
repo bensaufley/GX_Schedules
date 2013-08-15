@@ -9,5 +9,31 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require_tree ./includes
  */
+@import shared
+@import 'compass/reset'
+
+*
+  @include box-sizing(border-box)
+
+html
+  min-height: 100%
+
+html, body
+  height: 100%
+  width: 100%
+  margin: 0
+  padding: 0
+  border: 0
+
+body, input, textarea, select
+  font: 300 62.5% 'Avenir','Avenir Lt Std',sans-serif
+
+a:link, a:visited
+  color: $orange
+  text-decoration: none
+  &:hover
+    color: $brown
+
+@import forms

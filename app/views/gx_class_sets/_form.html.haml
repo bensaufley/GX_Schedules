@@ -13,10 +13,13 @@
   = f.label :instructor do
     %strong Instructor:
     =f.select :instructor, Instructor.joins(:clubs).where(clubs: { id: @club.id }).order('last_name ASC, first_name ASC').map{|x| [x.last_name.nil? || x.last_name=="" ? "• #{x.first_name}" : "#{x.last_name}, #{x.first_name}",x.id] }, include_blank: '– Instructor –'
+  = f.label :level do
+    %strong Level:
+    =f.select :level, GxClassSet::LEVELS.each_with_index.map{|v,k| ["#{v[1]} (#{v[0]})",k] }
   = f.label :studio do
     %strong Studio:
     =f.select :studio, Studio.joins(:club).where(clubs: { id: @club.id }).order(:name).map{|x| [x.name, x.id]}, include_blank: '– Studio –'
-  = f.label :start_date do
+  = f.label :start_date, class: 'show' do
     %strong Start Date:
     =f.date_select :start_date
   = f.label :repeat_times do

@@ -55,6 +55,6 @@ class GxClassSetsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def gx_class_set_params
-      params[:gx_class_set]
+      params.require(:gx_class_set).permit(:gx_class_id, :studio_id, :instructor_id, :level, :start_date, :repeat_times, :start_time, :end_time, :reservable, :paid_class_csi_id, :reserve_max, :club_id)
     end
 end

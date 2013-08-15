@@ -1,0 +1,62 @@
+input, select, textarea
+  font-size: 1em
+  line-height: 1.3em
+form
+  label
+    display: block
+    width: 100%
+    margin-bottom: 5px
+    @include clearfix
+    input, textarea, select, strong
+      font-size: 1em
+      line-height: 1.3em
+      float: left
+      border: 1px solid #ccc
+      display: block
+    input, select, strong
+      padding: .3em
+    select
+      margin: .3em 0
+      &[name*="date("]
+        width: 20%
+        &:last-child
+          width: 30%
+    strong
+      border: 1px solid transparent
+      width: 30%
+      padding-right: 10px
+      text-align: right
+    input, textarea, select
+      width: 70%
+    &.checkbox, &.radio
+      strong
+        display: inline-block
+        width: auto
+      input
+        display: inline-block
+        width: auto
+        margin: .4em 0
+        vertical-align: baseline
+    html.placeholder &
+      strong
+        display: none
+      input, select, textarea
+        width: 100%
+      select[name*="date("]
+        width: 30%
+        &:last-child
+          width: 40%
+      &.show
+        strong
+          display: block
+        input, select, textarea
+          width: 70%
+        select[name*="date("]
+          width: 20%
+          &:last-child
+            width: 30%
+      &.radio, &.checkbox
+        strong
+          display: inline-block
+        input
+          width: auto
