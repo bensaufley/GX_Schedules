@@ -144,8 +144,8 @@ ActiveRecord::Schema.define(version: 20130815141740) do
   add_index "studios", ["club_id"], name: "index_studios_on_club_id", using: :btree
 
   create_table "tracks", force: true do |t|
-    t.string   "short"
-    t.string   "long"
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

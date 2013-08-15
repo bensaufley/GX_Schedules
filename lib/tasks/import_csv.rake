@@ -31,13 +31,15 @@ namespace :db do
             cl = GxClass.create({
               name:         c['class_name'],
               description:  c['class_description'],
-              category:     Category.find_or_create_by(name: c['category_name'])
+              category:     Category.find_or_create_by(name: c['category'])
             })
             3.times do |x|
-              if !c['track_' + x].nil?
-                cl.tracks << Track.find_or_create_by(name: c['track_' + x])
+              if !c["track_#{x}"].nil?
+                cl.tracks << Track.find_or_create_by(name: c["track_#{x}"])
               end
             end
+            puts "Added #{cl.name}. Category: #{cl.category.name}; tracks: #{cl.tracks.map(&:name).join(", ")}."
+          end
         else
           puts "No case found for model #{model}"
       end
