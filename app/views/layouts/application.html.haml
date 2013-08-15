@@ -7,7 +7,8 @@
     = csrf_meta_tags
   %body
     %header
-      =content_tag(:h1, yield(:title)) if content_for?(:title)
+      =content_tag(:h1, "Class Schedules")
+      =content_tag(:h2, yield(:title)) if content_for?(:title)
     %main
       = yield
     %footer
