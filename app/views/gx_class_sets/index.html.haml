@@ -1,0 +1,17 @@
+%h1 Listing gx_class_sets
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @gx_class_sets.each do |gx_class_set|
+    %tr
+      %td= link_to 'Show', [gx_class_set.club, gx_class_set]
+      %td= link_to 'Edit', edit_club_gx_class_set_path(gx_class_set)
+      %td= link_to 'Destroy', [gx_class_set.club, gx_class_set], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Gx class set', new_club_gx_class_set_path

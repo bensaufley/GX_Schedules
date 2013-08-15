@@ -27,7 +27,7 @@ GXSchedules::Application.routes.draw do
     resources :clubs, except: [ :show, :index ]
     scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
       get "/", to: "club#show"
-      resources :gx_class_sets, path: "class_sets"
+      resources :gx_class_sets, path: "class_sets", except: [ :index ]
       resources :studios, :instructors
       resources :users
     end

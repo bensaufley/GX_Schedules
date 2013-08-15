@@ -1,0 +1,43 @@
+= form_for [@club, @gx_class_set] do |f|
+  - if @gx_class_set.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gx_class_set.errors.count, "error")} prohibited this gx_class_set from being saved:"
+      %ul
+        - @gx_class_set.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.hidden_field :club_id, value: @club.id
+  = f.label :gx_class do
+    %strong Class:
+    =f.select :gx_class, GxClass.all.order(:name).map{|x| [x.name,x.id]}, include_blank: '– Class –'
+  = f.label :instructor do
+    %strong Instructor:
+    =f.select :instructor, Instructor.joins(:clubs).where(clubs: { id: @club.id }).order('last_name ASC, first_name ASC').map{|x| [x.last_name.nil? || x.last_name=="" ? "• #{x.first_name}" : "#{x.last_name}, #{x.first_name}",x.id] }, include_blank: '– Instructor –'
+  = f.label :studio do
+    %strong Studio:
+    =f.select :studio, Studio.joins(:club).where(clubs: { id: @club.id }).order(:name).map{|x| [x.name, x.id]}, include_blank: '– Studio –'
+  = f.label :start_date do
+    %strong Start Date:
+    =f.date_select :start_date
+  = f.label :repeat_times do
+    %strong Instances:
+    =f.text_field :repeat_times, type: 'number', placeholder: 'Instances'
+  = f.label :start_time do
+    %strong Start Time:
+    =f.text_field :start_time, type: 'time', placeholder: 'Start Time'
+  = f.label :end_time do
+    %strong End Time:
+    =f.text_field :end_time, type: 'time', placeholder: 'End Time'
+  .reservations
+    = f.label :reservable, class: 'checkbox' do
+      =f.check_box :reservable
+      %strong Reservable
+    = f.label :paid_class_csi_id do
+      %strong CSI ID (paid):
+      =f.text_field :paid_class_csi_id, placeholder: 'CSI ID (paid)'
+    = f.label :reserve_max do
+      %strong Capacity (unpaid):
+      =f.text_field :reserve_max, type: 'number', placeholder: 'Capacity (unpaid)'
+
+  .actions
+    = f.submit @gx_class_set.new_record? ? "Create Schedule" : "Update Schedule"
