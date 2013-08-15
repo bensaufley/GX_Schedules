@@ -23,6 +23,13 @@
 - `string :twitter`
 - `string :timezone`
 
+### Instructor
+- `string :first_name`
+- `string :last_name`
+- `text :bio`
+- `boolean :trains`
+- `string :csi_id`
+
 ### Studio
 - `string :name`
 - `text :description`

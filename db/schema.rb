@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814223258) do
+ActiveRecord::Schema.define(version: 20130814233653) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -94,6 +94,18 @@ ActiveRecord::Schema.define(version: 20130814223258) do
   end
 
   add_index "gx_classes", ["category_id"], name: "index_gx_classes_on_category_id", using: :btree
+
+  create_table "instructors", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "bio"
+    t.boolean  "trains"
+    t.string   "csi_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "instructors", ["csi_id"], name: "index_instructors_on_csi_id", using: :btree
 
   create_table "reservations", force: true do |t|
     t.integer  "gx_class_set_id"

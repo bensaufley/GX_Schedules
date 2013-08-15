@@ -131,3 +131,280 @@ users.each do |u|
   u.update_attribute(:admin, true)
   u.clubs << Club.all
 end
+
+studios = Studio.create(
+  [{
+    club_id: 6,
+    name: 'Basketball Court',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Boxing Studio',
+    description: ''
+  },
+  {
+    club_id: 3,
+    name: 'Boxing Studio',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Pilates',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Fire',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Fire',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Fitness Area',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'FKO',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Flex Room',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Longevity',
+    description: ''
+  },
+  {
+    club_id: 3,
+    name: 'Mind/Body',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Pool',
+    description: ''
+  },
+  {
+    club_id: 6,
+    name: 'Pool',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Pool',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Pool',
+    description: ''
+  },
+  {
+    club_id: 3,
+    name: 'Pool',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Power',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'REV',
+    description: ''
+  },
+  {
+    club_id: 6,
+    name: 'REV',
+    description: ''
+  },
+  {
+    club_id: 2,
+    name: 'REV',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'REV',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'REV',
+    description: ''
+  },
+  {
+    club_id: 3,
+    name: 'REV',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Rooftop Terrace',
+    description: ''
+  },
+  {
+    club_id: 3,
+    name: 'Rooftop Terrace',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Studio 1',
+    description: ''
+  },
+  {
+    club_id: 6,
+    name: 'Studio 1',
+    description: ''
+  },
+  {
+    club_id: 2,
+    name: 'Studio 1',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Studio 1',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Studio 1',
+    description: ''
+  },
+  {
+    club_id: 3,
+    name: 'Studio 1',
+    description: ''
+  },
+  {
+    club_id: 6,
+    name: 'Studio 2',
+    description: ''
+  },
+  {
+    club_id: 2,
+    name: 'Studio 2',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Studio 2',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Studio 2',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Track',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Trio Studio',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Water',
+    description: ''
+  },
+  {
+    club_id: 5,
+    name: 'Yerba Buena Room',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Wood',
+    description: ''
+  },
+  {
+    club_id: 4,
+    name: 'Earth',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Loft',
+    description: ''
+  },
+  {
+    club_id: 2,
+    name: 'Pool',
+    description: ''
+  },
+  {
+    club_id: 2,
+    name: 'Outdoors',
+    description: ''
+  },
+  {
+    club_id: 6,
+    name: 'Pilates',
+    description: ''
+  },
+  {
+    club_id: 7,
+    name: 'Diamond',
+    description: 'REV Studio'
+  },
+  {
+    club_id: 7,
+    name: 'Ruby',
+    description: 'GroupEx'
+  },
+  {
+    club_id: 7,
+    name: 'Sapphire',
+    description: 'Mind Body'
+  },
+  {
+    club_id: 7,
+    name: 'Emerald',
+    description: 'Functional Training'
+  },
+  {
+    club_id: 7,
+    name: 'Topaz',
+    description: 'Pilates'
+  },
+  {
+    club_id: 7,
+    name: 'Amethyst',
+    description: 'Duet'
+  },
+  {
+    club_id: 2,
+    name: 'Pilates',
+    description: ''
+  },
+  {
+    club_id: 1,
+    name: 'Roofdeck',
+    description: ''
+  }]
+)
+
+categories = Category.create([
+  { name: 'Cardiovascular/Conditioning' },
+  { name: 'Mind Body' },
+  { name: 'REV' },
+  { name: 'Martial Arts/Boxing' },
+  { name: 'Splash' },
+  { name: 'Dance' }
+])
