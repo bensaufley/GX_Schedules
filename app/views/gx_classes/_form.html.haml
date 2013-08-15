@@ -1,0 +1,10 @@
+= form_for @gx_class do |f|
+  - if @gx_class.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gx_class.errors.count, "error")} prohibited this gx_class from being saved:"
+      %ul
+        - @gx_class.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

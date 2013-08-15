@@ -1,0 +1,2 @@
+module GxClassesHelper
+end
