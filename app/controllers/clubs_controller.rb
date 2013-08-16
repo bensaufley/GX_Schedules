@@ -11,7 +11,7 @@ class ClubsController < ApplicationController
   end
   
   def show
-    @date = params[:date].to_date || Date.today
+    @date = params[:date].nil? ? Date.today : params[:date].to_date
     @classes = @club.get_schedule(@date, 7)
   end
 
