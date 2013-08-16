@@ -13,4 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.ui.datepicker
 //= require_tree ./includes
+
+$(document).ready(function() {
+  $('label.date').each(function() {
+    $this=$(this)
+    $sel = $this.find('select').first()
+    $('<input />',{ type: 'date', id: $sel.attr('id').replace(/_[0-9]i$/,''), name: $sel.attr('name').replace(/\(.+?\)$/,'') }).appendTo($this)
+    $this.find('select').remove()
+    if (!Modernizr.inputtypes.date) {
+      $this.find('input').datepicker()
+    }
+  })
+})

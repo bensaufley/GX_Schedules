@@ -13,6 +13,7 @@ gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Utilities
 gem 'devise'
