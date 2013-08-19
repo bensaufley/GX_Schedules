@@ -9,12 +9,13 @@
 
 - @classes.each do |day,classes|
   - day = day.to_date
-  %section= day.strftime("%a %-m.%-d")
-  =link_to "Schedule New Class", new_club_gx_class_set_path( start_date: day ) if user_signed_in?
-  %ul
-    - if classes.empty?
-      %li
-        %strong No classes scheduled
-    - else
-      - classes.each do |cl|
-        =render "gx_class_sets/schedule_instance", locals: { cl: cl }
+  %section
+    %h2= day.strftime("%a %-m.%-d")
+    =link_to "Schedule New Class", new_club_gx_class_set_path( start_date: day ), class: 'new_class_set' if user_signed_in?
+    %ul
+      - if classes.empty?
+        %li
+          %strong No classes scheduled
+      - else
+        - classes.each do |i|
+          =render partial: "/instances/listitem", locals: { i: i }

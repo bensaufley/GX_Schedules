@@ -23,7 +23,7 @@ $(document).ready(function() {
     $sel = $sels.first()
     val = $($sels[0]).val() + "-" + zeroFill($($sels[1]).val(),2) + "-" + zeroFill($($sels[2]).val(),2)
     console.log(val)
-    $('<input />',{ type: 'date', id: $sel.attr('id').replace(/_[0-9]i$/,''), name: $sel.attr('name').replace(/\(.+?\)$/,''), value: val}).appendTo($this)
+    $('<input />',{ type: 'date', id: $sel.attr('id').replace(/_[0-9]i$/,''), name: $sel.attr('name').replace(/\(.+?\)/,''), value: val}).appendTo($this)
     $this.find('select').remove()
     if (!Modernizr.inputtypes.date) {
       $this.find('input').datepicker()

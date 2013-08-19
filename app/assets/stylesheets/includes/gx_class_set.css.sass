@@ -1,0 +1,30 @@
+@import shared
+
+form
+  label[for="gx_class_set_gx_class_id"],label[for="gx_class_set_instructor_id"],label[for="gx_class_set_level"],label[for="gx_class_set_studio_id"]
+    float: left
+  label[for="gx_class_set_gx_class_id"] select
+    @include border-radius(2px 0 0 2px)
+    border-right: 0
+  label[for="gx_class_set_instructor_id"] select
+    @include border-radius(0)
+    border-right: 0
+  label[for="gx_class_set_gx_class_id"],label[for="gx_class_set_instructor_id"]
+    width: 35%
+    select
+      height: 12em
+      margin: 0
+  label[for="gx_class_set_level"]
+    margin-bottom: 0
+    select
+      @include border-radius(0 2px 0 0)
+      border-bottom: 0
+  label[for="gx_class_set_studio_id"]
+    margin-top: 0
+    select
+      @include border-radius(0 0 2px 0)
+  label[for="gx_class_set_level"],label[for="gx_class_set_studio_id"]
+    width: 30%
+    select
+      height: 6em
+      margin: 0

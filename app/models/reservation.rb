@@ -1,3 +1,3 @@
 class Reservation < ActiveRecord::Base
-  belongs_to :gx_class_set
+  belongs_to :instance
 end

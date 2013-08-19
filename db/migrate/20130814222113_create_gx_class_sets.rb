@@ -6,7 +6,6 @@ class CreateGxClassSets < ActiveRecord::Migration
       t.integer :instructor_id
       t.integer :level
       t.date :start_date
-      t.integer :repeat_times
       t.time :start_time
       t.time :end_time
       t.boolean :reservable

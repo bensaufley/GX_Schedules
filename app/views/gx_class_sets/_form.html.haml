@@ -1,4 +1,4 @@
-= form_for [@club, @gx_class_set] do |f|
+= form_for [@club,@gx_class_set] do |f|
   - if @gx_class_set.errors.any?
     #error_explanation
       %h2= "#{pluralize(@gx_class_set.errors.count, "error")} prohibited this gx_class_set from being saved:"
@@ -7,28 +7,28 @@
           %li= msg
 
   = f.hidden_field :club_id, value: @club.id
-  = f.label :gx_class do
+  = f.label :gx_class_id do
     %strong Class:
-    =f.select :gx_class, GxClass.all.order(:name).map{|x| [x.name,x.id]}, include_blank: '– Class –'
-  = f.label :instructor do
+    =f.select :gx_class_id, GxClass.all.order(:name).map{|x| [x.name,x.id]}, { include_blank: '– Class –' }, { size: 8 }
+  = f.label :instructor_id do
     %strong Instructor:
-    =f.select :instructor, Instructor.joins(:clubs).where(clubs: { id: @club.id }).order('last_name ASC, first_name ASC').map{|x| [x.last_name.nil? || x.last_name=="" ? "• #{x.first_name}" : "#{x.last_name}, #{x.first_name}",x.id] }, include_blank: '– Instructor –'
+    =f.select :instructor_id, Instructor.joins(:clubs).where(clubs: { id: @club.id }).order('last_name ASC, first_name ASC').map{|x| [x.last_name.nil? || x.last_name=="" ? "• #{x.first_name}" : "#{x.last_name}, #{x.first_name}",x.id] }, { include_blank: '– Instructor –' }, { size: 8 }
   = f.label :level do
     %strong Level:
-    =f.select :level, GxClassSet::LEVELS.each_with_index.map{|v,k| ["#{v[1]} (#{v[0]})",k] }
-  = f.label :studio do
+    =f.select :level, GxClassSet::LEVELS.each_with_index.map{|v,k| ["#{v[1]} (#{v[0]})",k] }, {}, { size: 4 }
+  = f.label :studio_id do
     %strong Studio:
-    =f.select :studio, Studio.joins(:club).where(clubs: { id: @club.id }).order(:name).map{|x| [x.name, x.id]}, include_blank: '– Studio –'
+    =f.select :studio_id, Studio.joins(:club).where(clubs: { id: @club.id }).order(:name).map{|x| [x.name, x.id]}, { include_blank: '– Studio –' }, { size: 4 }
   = f.label :start_date, class: 'show date' do
     %strong Start Date:
     =f.date_select :start_date
-  = f.label :repeat_times do
+  = f.label :repeat_times, class: 'show' do
     %strong Instances:
-    =f.text_field :repeat_times, type: 'number', placeholder: 'Instances'
-  = f.label :start_time do
+    =f.text_field :repeat_times, type: 'number', placeholder: 'Instances', min: 1, max: 52
+  = f.label :start_time, class: 'show' do
     %strong Start Time:
     =f.text_field :start_time, type: 'time', placeholder: 'Start Time'
-  = f.label :end_time do
+  = f.label :end_time, class: 'show' do
     %strong End Time:
     =f.text_field :end_time, type: 'time', placeholder: 'End Time'
   .reservations

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815141740) do
+ActiveRecord::Schema.define(version: 20130819180206) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20130815141740) do
     t.integer  "instructor_id"
     t.integer  "level"
     t.date     "start_date"
-    t.integer  "repeat_times"
     t.time     "start_time"
     t.time     "end_time"
     t.boolean  "reservable"
@@ -96,6 +95,20 @@ ActiveRecord::Schema.define(version: 20130815141740) do
 
   add_index "gx_classes", ["category_id"], name: "index_gx_classes_on_category_id", using: :btree
 
+  create_table "instances", force: true do |t|
+    t.integer  "gx_class_set_id"
+    t.date     "effective_date"
+    t.integer  "studio_id"
+    t.integer  "instructor_id"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.boolean  "canceled",        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "instances", ["gx_class_set_id", "effective_date"], name: "index_instances_on_gx_class_set_id_and_effective_date", unique: true, using: :btree
+
   create_table "instructors", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -109,29 +122,15 @@ ActiveRecord::Schema.define(version: 20130815141740) do
   add_index "instructors", ["csi_id"], name: "index_instructors_on_csi_id", using: :btree
 
   create_table "reservations", force: true do |t|
-    t.integer  "gx_class_set_id"
+    t.integer  "instance_id"
     t.integer  "member_id"
     t.integer  "member_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "reservations", ["gx_class_set_id"], name: "index_reservations_on_gx_class_set_id", using: :btree
+  add_index "reservations", ["instance_id"], name: "index_reservations_on_instance_id", using: :btree
   add_index "reservations", ["member_id"], name: "index_reservations_on_member_id", using: :btree
-
-  create_table "schedule_changes", force: true do |t|
-    t.integer  "gx_class_set_id"
-    t.date     "effective_date"
-    t.integer  "studio_id"
-    t.integer  "instructor_id"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.boolean  "canceled"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "schedule_changes", ["gx_class_set_id", "effective_date"], name: "index_schedule_changes_on_gx_class_set_id_and_effective_date", unique: true, using: :btree
 
   create_table "studios", force: true do |t|
     t.string   "name"

@@ -1,0 +1,11 @@
+%li.class{class: i.canceled? ? "canceled" : ""}
+  %h3.name= link_to i.gx_class.name, i.gx_class
+  %p.instructor{class: i.instructor_id.nil? ? "" : "changed" }= link_to "#{i.get_at('instructor').first_name} #{i.get_at('instructor').last_name}", [@club,i.get_at('instructor')]
+  %p.info
+    %span.studio{class: i.studio_id.nil? ? "" : "changed" }= link_to i.get_at('studio').name + (/studio/i === i.get_at('studio').name ? "" : " Studio"), [@club,i.get_at('studio')]
+    %span.time{class: i.start_time.nil? || i.end_time.nil? ? "" : "changed" }= i.get_at('start_time').strftime(i.get_at('start_time').hour < 12 && i.get_at('end_time').hour > 12 ? "%-I:%M%P" : "%-I:%M") + " – " + i.get_at('end_time').strftime("%-I:%M%P")
+  - if current_user.try(:admin?)
+    %p.admin
+      =link_to "Change", edit_club_gx_class_set_instance_path(@club,i.gx_class_set,i)
+      =link_to "Update", edit_club_gx_class_set_path(@club,i.gx_class_set)
+      =link_to (i.canceled? ? "Reinstate" : "Cancel"), club_gx_class_set_instance_path(@club,i.gx_class,i, instance: { canceled: !i.canceled? }), confirm: "Are you sure you wish to #{i.canceled? ? 'reinstate' : 'canceled'} #{i.gx_class.name} on #{i.effective_date.strftime("%-m.%-d.%Y")}?", method: :patch

@@ -55,7 +55,8 @@
 - `integer :instructor_id`
 - `integer :level`
 - `date :start_date`
-- `integer :repeat_times`
+- `integer :repeat_times`  
+  Non-DB. Only used to create `instance`s.
 - `time :start_time`
 - `time :end_time`
 - `boolean :reservable`  
@@ -64,7 +65,7 @@
   If it is a paid class, the `paid_class_csi_guid` will be non-nil and `reserve_max` will be nil.
 - `integer :reserve_max`
 
-### ScheduleChange
+### Instance
 - `integer :gx_class_set_id`
 - `date :effective_date`
 - `integer :studio_id`
@@ -74,7 +75,7 @@
 - `boolean :canceled`
 
 ### Reservation
-- `integer :gx_class_set_id`
+- `integer :instance_id`
 - `string :member_id`
 - `string :member_email`
 
@@ -89,7 +90,11 @@
     *Has_Many*
     - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
     - **[`Studio`](#studio)s**
-    - **[`Instructor`](#instructor)s** ( through: **[`ClubInstructor`](#clubinstructor)** )
+    - **[`Instructor`](#instructor)s** ( through: **[`ClubInstructor`](#clubinstructor)** )  
+      - *Has_Many*
+        - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
+        - **[`GxClassSet`](#gxclassset)s**
+        - **[`Instance`](#instance)s**
     - **[`User`](#user)s** ( through: **[`ClubUser`](#clubuser)** )
 - **[`GxClass`](#gxclass)**  
     Unique, named classes that can be used at any and all [`Club`](#club)s.  
@@ -105,12 +110,11 @@
                 - **[`Studio`](#studio)**
                 - **[`Level`](#level)**
             - *Has_Many*
-                - **[`GxClassChange`](#gxclasschange)s**  
-                  A change to a [`GxClassSet`](#gxclassset) valid for a particular day
-                - **[`Reservation`](#reservation)s**
+                - **[`Instance`](#instance)s**  
+                  An instance of a [`GxClassSet`](#gxclassset) on a particular day. Its attributes are only filled if they are different from the parent.  
+                  - *Has_Many*
+                      - **[`Reservation`](#reservation)s**
 - **[`User`](#user)**  
     For internal use only - updating the schedules. Not to be used for external users - they will be handled through CSI  
     *Has_Many*
     - **[`Club`](#club)s** ( through: **[`ClubUser`](#clubuser)** )
-    - **[`GxClass`](#gxclass)es** ( through: **[`GxClassSet`](#gxclassset)** )
-    - **[`GxClassSet`](#gxclassset)s**

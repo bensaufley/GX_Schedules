@@ -15,7 +15,9 @@ GXSchedules::Application.routes.draw do
   resources :gx_classes, path: "classes", only: [ :index, :show ]
 
   scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
-    resources :gx_classes, path: "classes", only: [ :index  ]
+    resources :gx_classes, path: "classes", only: [ :index  ] do
+      get "/:id", to: "instances#show"
+    end
     resources :studios, :instructors, only: [ :index, :show ]
     get "/", to: "clubs#show"
   end
@@ -27,7 +29,9 @@ GXSchedules::Application.routes.draw do
     resources :clubs, except: [ :show, :index ]
     scope "/:club_id", as: :club, constraints: { club_id: /[A-Z]{2,3}/ } do
       get "/", to: "club#show"
-      resources :gx_class_sets, path: "class_sets", except: [ :index ]
+      resources :gx_class_sets, path: "class_sets", except: [ :index ] do
+        resources :instances, except: [ :new ]
+      end
       resources :studios, :instructors
       resources :users
     end

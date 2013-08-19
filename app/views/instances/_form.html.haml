@@ -1,0 +1,30 @@
+= form_for [@club, @instance.gx_class_set, @instance] do |f|
+  - if @instance.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@instance.errors.count, "error")} prohibited this instance from being saved:"
+      %ul
+        - @instance.errors.full_messages.each do |msg|
+          %li= msg
+  %h1
+    Class:
+    =link_to @instance.gx_class.name, @instance.gx_class
+  %h2
+    Date:
+    = @instance.effective_date.strftime("%-m.%-d.%Y")
+  = f.label :instructor_id do
+    %strong Instructor:
+    =f.select :instructor_id, Instructor.joins(:clubs).where(clubs: { id: @club.id }).order('last_name ASC, first_name ASC').map{|x| [x.last_name.nil? || x.last_name=="" ? "• #{x.first_name}" : "#{x.last_name}, #{x.first_name}",x.id] }, { include_blank: '– Instructor –' }, { size: 8 }
+  = f.label :studio_id do
+    %strong Studio:
+    =f.select :studio_id, Studio.joins(:club).where(clubs: { id: @club.id }).order(:name).map{|x| [x.name, x.id]}, { include_blank: '– Studio –' }, { size: 4 }
+  = f.label :start_time, class: 'show' do
+    %strong Start Time:
+    =f.text_field :start_time, type: 'time', placeholder: 'Start Time'
+  = f.label :end_time, class: 'show' do
+    %strong End Time:
+    =f.text_field :end_time, type: 'time', placeholder: 'End Time'
+  = f.label :canceled, class: 'checkbox' do
+    =f.check_box :canceled
+    %strong Canceled
+  .actions
+    = f.submit 'Save'

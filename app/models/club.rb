@@ -6,6 +6,7 @@ class Club < ActiveRecord::Base
   has_many :studios
   has_many :gx_class_sets
   has_many :gx_classes, through: :gx_class_sets
+  has_many :instances, through: :gx_class_sets
 
   def get_schedule(from_date=Date.today, count=1)
     raise "from_date cannot be nil" if from_date.nil?
@@ -14,7 +15,7 @@ class Club < ActiveRecord::Base
     schedule = {}
     count.times do |x|
       date = from_date + x.days
-      schedule["#{date}"]=gx_class_sets.for_date(date)
+      schedule["#{date}"]=instances.where(effective_date: date)
     end
     return schedule
   end
